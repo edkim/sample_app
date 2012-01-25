@@ -1,5 +1,17 @@
-1327452514
+1327457496
 Application	C:/Sites/sample_app/config/application.rb	  class Application 
 ApplicationController	C:/Sites/sample_app/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	C:/Sites/sample_app/app/helpers/application_helper.rb	module ApplicationHelper
+GET 'contact'	C:/Sites/sample_app/spec/controllers/pages_controller_spec.rb	describe "GET 'contact'" do
+GET 'home'	C:/Sites/sample_app/spec/controllers/pages_controller_spec.rb	describe "GET 'home'" do
+PagesController	C:/Sites/sample_app/app/controllers/pages_controller.rb	class PagesController 
+PagesHelper	C:/Sites/sample_app/app/helpers/pages_helper.rb	module PagesHelper
 SampleApp	C:/Sites/sample_app/config/application.rb	module SampleApp
+concats two strings with spaces	C:/Sites/sample_app/spec/helpers/pages_helper_spec.rb	it "concats two strings with spaces" do
+contact	C:/Sites/sample_app/app/controllers/pages_controller.rb	  def contact
+home	C:/Sites/sample_app/app/controllers/pages_controller.rb	  def home
+pages/contact.html.erb	C:/Sites/sample_app/spec/views/pages/contact.html.erb_spec.rb	describe "pages/contact.html.erb" do
+pages/home.html.erb	C:/Sites/sample_app/spec/views/pages/home.html.erb_spec.rb	describe "pages/home.html.erb" do
+should be successful	C:/Sites/sample_app/spec/controllers/pages_controller_spec.rb	it "should be successful" do
+should be successful	C:/Sites/sample_app/spec/controllers/pages_controller_spec.rb	it "should be successful" do
+string concat	C:/Sites/sample_app/spec/helpers/pages_helper_spec.rb	describe "string concat" do
