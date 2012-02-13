@@ -43,12 +43,50 @@ describe "User pages" do
       describe "after saving the user" do
         before { click_button "Sign up" }
         let(:user) { User.find_by_email('user@example.com') }
-
+  
         it { should have_selector('title', text: user.name) }
         it { should have_selector('div.flash.success', text: 'Welcome') }
         it { should have_link('Sign out') }
+      end  
+    end
+  end
+  
+  describe "edit" do
+    let(:user) { FactoryGirl.create(:user) }
+    before do
+      sign_in user
+      visit edit_user_path(user)
+    end
+
+    describe "page" do
+      it { should have_selector('h1',    text: "Edit user") }
+      it { should have_selector('title', text: "Edit user") }
+      it { should have_link('change', href: 'http://gravatar.com/emails') }
+    end
+    
+    describe "with valid information" do
+      let(:user)      { FactoryGirl.create(:user) }
+      let(:new_name)  { "New Name" }
+      let(:new_email) { "new@example.com" }
+      before do
+        fill_in "Name",         with: new_name
+        fill_in "Email",        with: new_email
+        fill_in "Password",     with: user.password
+        fill_in "Confirmation", with: user.password
+        click_button "Update"
       end
-      
+
+      it { should have_selector('title', text: new_name) }
+      it { should have_selector('div.flash.success') }
+      specify { user.reload.name.should  == new_name }
+      specify { user.reload.email.should == new_email }
+    end
+
+    describe "with invalid information" do
+      let(:error) { '1 error prohibited this user from being saved' }
+      before { click_button "Update" }
+
+      it { should have_content(error) }
     end
   end
 end
